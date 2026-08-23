@@ -22,7 +22,8 @@ export default function ProjectCard({ project, span, sizes }: Props) {
       </div>
       <div className="cap">
         <b>{project.name}</b>
-        <span>{project.cat}</span>
+        <span className="cat">{project.cat}</span>
+        <span className="arrow" aria-hidden="true">→</span>
       </div>
     </Link>
   );
