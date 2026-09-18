@@ -81,7 +81,7 @@ export default function ContactForm() {
 
       <div className="field two">
         <div>
-          <label htmlFor="f-type">Project type</label>
+          <label htmlFor="f-type">What are we making?</label>
           <select id="f-type" value={form.type} onChange={set("type")} className={errors.type ? "err" : ""}>
             <option value="">Select…</option>
             <option>Product / still life</option>
@@ -91,10 +91,10 @@ export default function ContactForm() {
             <option>E-commerce catalogue</option>
             <option>Something else</option>
           </select>
-          {errors.type && <div className="msg show">Pick a project type.</div>}
+          {errors.type && <div className="msg show">Let me know what we're making.</div>}
         </div>
         <div>
-          <label htmlFor="f-budget">Budget range</label>
+          <label htmlFor="f-budget">Ballpark budget</label>
           <select id="f-budget" value={form.budget} onChange={set("budget")}>
             <option value="">Select…</option>
             <option>Under ₹50k</option>

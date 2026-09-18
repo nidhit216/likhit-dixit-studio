@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Photo from "./Photo";
+import { useReveal } from "./Reveal";
 import type { Project } from "@/lib/types";
 
 type Props = {
@@ -7,12 +10,20 @@ type Props = {
   /** override the grid span classes (used by the Work page) */
   span?: string;
   sizes?: string;
+  /** stagger delay in ms, for a cascading reveal across a grid */
+  delay?: number;
 };
 
-export default function ProjectCard({ project, span, sizes }: Props) {
+export default function ProjectCard({ project, span, sizes, delay = 0 }: Props) {
   const cls = span ?? "c1";
+  const { ref, className, style } = useReveal<HTMLAnchorElement>(delay);
   return (
-    <Link href={`/work/${project.slug}`} className={`cell ${cls}`}>
+    <Link
+      ref={ref}
+      href={`/work/${project.slug}`}
+      className={`cell ${cls} ${className}`.trim()}
+      style={style}
+    >
       <div className="ph card-img">
         <Photo
           src={project.cover}

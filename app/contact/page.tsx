@@ -14,13 +14,13 @@ export default function ContactPage() {
         <Reveal as="h1">
           Let&apos;s put your product in <span className="slate">the right light.</span>
         </Reveal>
-        <Reveal>
+        <Reveal delay={80}>
           <p>
             Tell me a little about the work. I take on a small number of projects each month, so the
             more detail the better.
           </p>
         </Reveal>
-        <Reveal className="contact-details">
+        <Reveal className="contact-details" delay={160}>
           <div>
             <b>Email</b>
             <a href="mailto:likhitdixit@gmail.com">likhitdixit@gmail.com</a>

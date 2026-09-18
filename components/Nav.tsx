@@ -35,7 +35,10 @@ export default function Nav() {
               </Link>
             ))}
           </div>
-          <div className="navright" aria-hidden="true" />
+          <div className="navright">
+            <span className="dot" aria-hidden="true" />
+            Mumbai / Remote
+          </div>
           <button
             className={`burger ${open ? "open" : ""}`}
             aria-label="Menu"

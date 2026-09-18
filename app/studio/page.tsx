@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import Photo from "@/components/Photo";
+import { getProjects } from "@/lib/gallery";
 
 export const metadata: Metadata = {
   title: "Studio",
@@ -9,14 +11,15 @@ export const metadata: Metadata = {
 };
 
 export default function StudioPage() {
+  const projects = getProjects();
+
   return (
     <div className="wrap">
       <div className="studio-hero">
         <Reveal as="h1">
-          I photograph a small number of things{" "}
-          <span className="slate">extremely well</span> — so a single frame can carry a whole brand.
+          Every brand has something worth noticing. <br/> I'm here to find it, <span className="slate">capture it</span> and make it memorable.{" "}
         </Reveal>
-        <Reveal className="sm">
+        <Reveal className="sm" delay={100}>
           Likhit Dixit is a product &amp; food photographer based in Mumbai, working with brands and
           restaurants worldwide.
         </Reveal>
@@ -34,62 +37,37 @@ export default function StudioPage() {
           </div>
         </Reveal>
 
-        <Reveal className="bio">
+        <Reveal className="bio" delay={120}>
           <p>
-            <b>I run a one-person studio</b> for brands, e-commerce teams and restaurants who care
-            how their product looks in the frame — and want a consistent, editorial hand behind
-            every image.
+            I work closely with a select number of brands, creating images that feel considered, distinctive, and true to what they're building.
           </p>
           <p>
-            The work sits where still life meets commerce: clean light, considered composition, and
-            a grade that stays coherent across an entire catalogue or campaign. Small roster, close
-            collaboration, images that hold up in print and on screen.
+            My approach is simple: thoughtful composition, beautiful light, and an eye for the details that make something worth noticing. Whether it’s a single hero image or an entire campaign, I care about creating work that feels cohesive, timeless, and unmistakably yours.
           </p>
-
           <div style={{ marginTop: 34 }}>
             <span className="lab">Services</span>
           </div>
-          <div className="rows" style={{ marginTop: 14 }}>
-            <Row n="01" t="Product & still life" d="Studio" />
-            <Row n="02" t="Food & tabletop" d="Studio / On-site" />
-            <Row n="03" t="Campaign & editorial" d="With art direction" />
-            <Row n="04" t="E-commerce catalogue" d="Volume · one grade" />
-          </div>
-
-          <div style={{ marginTop: 40 }}>
-            <span className="lab">How a project runs</span>
-          </div>
-          <div className="rows">
-            <Row n="01" t="Brief & references" d="Week 1" />
-            <Row n="02" t="Test & look" d="Week 1–2" />
-            <Row n="03" t="Shoot" d="1–3 days" />
-            <Row n="04" t="Edit & delivery" d="Week 3" />
+          <div className="clients" style={{ marginTop: 14 }}>
+            <span>Product &amp; still life</span>
+            <span>Food &amp; tabletop</span>
+            <span>Campaign &amp; editorial</span>
+            <span>E-commerce catalogue</span>
           </div>
 
           <div style={{ marginTop: 40 }}>
             <span className="lab">Selected clients</span>
           </div>
           <div className="clients">
-            <span>Tanishq</span>
-            <span>Genki Cafe</span>
-            <span>Spoon Me</span>
-            <span>Royal Dairy Farm</span>
-            <span>DHC</span>
+            {projects.map((p) => (
+              <Link key={p.slug} href={`/work/${p.slug}`}>
+                {p.name}
+              </Link>
+            ))}
           </div>
         </Reveal>
       </div>
 
       <div style={{ height: 80 }} />
-    </div>
-  );
-}
-
-function Row({ n, t, d }: { n: string; t: string; d: string }) {
-  return (
-    <div className="r-row">
-      <span className="n">{n}</span>
-      <span className="t">{t}</span>
-      <span className="d">{d}</span>
     </div>
   );
 }

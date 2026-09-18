@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import ProjectCard from "@/components/ProjectCard";
 import Photo from "@/components/Photo";
@@ -9,40 +10,36 @@ export default function HomePage() {
 
   return (
     <>
-      <header className="hero wrap">
-        <div className="hero-grid">
-          <Reveal as="h1">
-            Product &amp; food
-            <br />
-            photography, built
-            <br />
-            on <span className="slate">precision.</span>
-          </Reveal>
+      <header className="hero-full">
+        <div className="ph hero-full-media">
+          <Photo
+            src="/work/tanishq/01-bangles.jpg"
+            alt="Engraved gold bangles for Tanishq — jewellery photography by Likhit Dixit"
+            sizes="100vw"
+            priority
+          />
+          <div className="hero-full-scrim" />
 
-          <Reveal className="meta">
-            <span className="lab">Studio Practice</span>
-            <p>Clean, consistent, considered frames for brands that sell on how things look.</p>
-          </Reveal>
+          <div className="hero-full-copy wrap">
+            <Reveal>
+              <span className="lab hero-full-eyebrow">Studio Practice</span>
+              <h1>Details worth remembering</h1>
+              <p className="hero-full-sub">
+                <em>Thoughtfully seen. Beautifully captured.</em>
+              </p>
+            </Reveal>
+            <Reveal delay={120} className="hero-full-cta">
+              <Link href="/work">View work →</Link>
+            </Reveal>
+          </div>
 
-          <Reveal className="measure">
-            <span>Product · Food · Still Life</span>
-            <span>Est. 2019</span>
-            <span>Mumbai / Remote</span>
-          </Reveal>
-
-          <Reveal className="ph lead-img">
-            <Photo
-              src="/work/tanishq/01-bangles.jpg"
-              alt="Engraved gold bangles for Tanishq — jewellery photography by Likhit Dixit"
-              sizes="100vw"
-              priority
-            />
-            <span className="tag">Tanishq Jewellery — 2025</span>
-          </Reveal>
+          <a href="#selected-work" className="scroll-cue" aria-label="Scroll to selected work">
+            <span />
+          </a>
         </div>
       </header>
 
-      <section>
+      <section id="selected-work">
         <div className="wrap">
           <Reveal className="hd">
             <h2>Selected Work</h2>
@@ -51,7 +48,14 @@ export default function HomePage() {
           <div className="grid">
             {selected.map((p, i) => {
               const spans = ["c1", "c2", "c3 short", "c4 wide"];
-              return <ProjectCard key={p.slug} project={p} span={spans[i] ?? "c1"} />;
+              return (
+                <ProjectCard
+                  key={p.slug}
+                  project={p}
+                  span={spans[i] ?? "c1"}
+                  delay={i * 70}
+                />
+              );
             })}
           </div>
         </div>
@@ -69,10 +73,10 @@ export default function HomePage() {
           </Reveal>
           <Reveal className="r">
             <div className="rows">
-              <div className="r-row"><span className="n">01</span><span className="t">Product &amp; still life</span><span className="d">Studio</span></div>
-              <div className="r-row"><span className="n">02</span><span className="t">Food &amp; tabletop</span><span className="d">Studio / On-site</span></div>
-              <div className="r-row"><span className="n">03</span><span className="t">Campaign &amp; editorial</span><span className="d">Art direction</span></div>
-              <div className="r-row"><span className="n">04</span><span className="t">E-commerce catalogue</span><span className="d">Volume · one grade</span></div>
+              <div className="r-row"><span className="n">01</span><span className="t">Product &amp; still life</span></div>
+              <div className="r-row"><span className="n">02</span><span className="t">Food &amp; tabletop</span></div>
+              <div className="r-row"><span className="n">03</span><span className="t">Campaign &amp; editorial</span></div>
+              <div className="r-row"><span className="n">04</span><span className="t">E-commerce catalogue</span></div>
             </div>
           </Reveal>
         </div>

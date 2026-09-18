@@ -11,10 +11,8 @@ export default function WorkPage() {
   const projects = getProjects();
   const filters = getFilters();
   return (
-    <section>
-      <div className="wrap">
-        <WorkGridClient projects={projects} filters={filters} />
-      </div>
-    </section>
+    <div className="wrap work-page">
+      <WorkGridClient projects={projects} filters={filters} />
+    </div>
   );
 }

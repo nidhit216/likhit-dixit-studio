@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import Photo from "@/components/Photo";
 import { getProjects, getProject, nextProject } from "@/lib/gallery";
 
 export function generateStaticParams() {
@@ -38,26 +39,44 @@ export default async function ProjectPage({
 
   const next = nextProject(slug);
 
+  const gallery = p.images.slice(1);
+
   return (
     <>
-      <div className="wrap proj-top">
-        <Link href="/work" className="backlink">
-          ← Back to work
-        </Link>
+      <div className="ph hero-full-media">
+        <Photo
+          src={p.cover}
+          alt={`${p.name} — cover, ${p.cat.toLowerCase()} photography by Likhit Dixit`}
+          sizes="100vw"
+          priority
+        />
+        <div className="hero-full-scrim" />
 
-        <div className="proj-head">
-          <div className="ttl">
-            <span className="lab">{p.tags.join(" · ")}</span>
-            <h1>{p.name}</h1>
-          </div>
-          {(p.client || p.year) && (
-            <div className="sm">
-              {p.client}
-              {p.year ? ` — ${p.year}` : ""}
-            </div>
-          )}
+        <div className="wrap proj-hero-top">
+          <Link href="/work" className="proj-back">
+            ← Back to work
+          </Link>
         </div>
 
+        <div className="hero-full-copy proj wrap">
+          <div>
+            <span className="lab hero-full-eyebrow">{p.tags.join(" · ")}</span>
+            <h1>{p.name}</h1>
+            {(p.client || p.year) && (
+              <p className="hero-full-sub">
+                {p.client}
+                {p.year ? ` — ${p.year}` : ""}
+              </p>
+            )}
+          </div>
+        </div>
+
+        <a href="#proj-content" className="scroll-cue" aria-label="Scroll to project details">
+          <span />
+        </a>
+      </div>
+
+      <div id="proj-content" className="wrap proj-top">
         <div className="proj-meta">
           {p.client && (
             <dl>
@@ -88,21 +107,22 @@ export default async function ProjectPage({
       </div>
 
       <div className="wrap">
-        <div className="gallery">
-          {p.images.map((im, i) => (
-            <div key={im.src} className={`gallery-item ${i === 0 ? "lead" : ""}`}>
-              <Image
-                src={im.src}
-                alt={im.alt}
-                width={im.width}
-                height={im.height}
-                sizes={i === 0 ? "(max-width: 880px) 100vw, 1240px" : "(max-width: 880px) 100vw, 620px"}
-                priority={i === 0}
-                className="gal-photo"
-              />
-            </div>
-          ))}
-        </div>
+        {gallery.length > 0 && (
+          <div className="gallery">
+            {gallery.map((im) => (
+              <div key={im.src} className="gallery-item">
+                <Image
+                  src={im.src}
+                  alt={im.alt}
+                  width={im.width}
+                  height={im.height}
+                  sizes="(max-width: 880px) 100vw, 620px"
+                  className="gal-photo"
+                />
+              </div>
+            ))}
+          </div>
+        )}
 
         {p.approach && (
           <div className="proj-note">
