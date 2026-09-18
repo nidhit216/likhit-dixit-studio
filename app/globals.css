@@ -185,7 +185,7 @@ section { padding: clamp(58px, 8vw, 104px) 0; }
 .r-row .d { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-align: right; }
 
 /* ---------- WORK INDEX ---------- */
-.work-page { padding: clamp(32px, 5vw, 56px) 0 clamp(56px, 7vw, 96px); }
+.work-page { padding-top: clamp(32px, 5vw, 56px); padding-bottom: clamp(56px, 7vw, 96px); }
 .work-intro { font-size: 15px; color: var(--muted); max-width: 56ch; margin: -18px 0 30px; }
 
 /* ---------- FILTERS (pill chips, touch-friendly) ---------- */
