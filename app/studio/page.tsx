@@ -15,18 +15,8 @@ export default function StudioPage() {
 
   return (
     <div className="wrap">
-      <div className="studio-hero">
-        <Reveal as="h1">
-          Every brand has something worth noticing. <br/> I'm here to find it, <span className="slate">capture it</span> and make it memorable.{" "}
-        </Reveal>
-        <Reveal className="sm" delay={100}>
-          Likhit Dixit is a product &amp; food photographer based in Mumbai, working with brands and
-          restaurants worldwide.
-        </Reveal>
-      </div>
-
-      <div className="studio-body">
-        <Reveal className="portrait">
+      <div className="studio-split">
+        <Reveal className="studio-left">
           <div className="ph portrait-img">
             {/* Replace public/about/headshot.jpg with a real photo of Likhit */}
             <Photo
@@ -35,9 +25,16 @@ export default function StudioPage() {
               sizes="(max-width: 880px) 100vw, 40vw"
             />
           </div>
+          <p className="studio-caption">
+            Likhit Dixit is a product &amp; food photographer based in Mumbai, working with brands and
+            restaurants worldwide.
+          </p>
         </Reveal>
 
-        <Reveal className="bio" delay={120}>
+        <Reveal className="studio-right" delay={120}>
+          <h1>
+            Every brand has something worth noticing. <br/> I'm here to find it, <span className="slate">capture it</span> and make it memorable.{" "}
+          </h1>
           <p>
             I work closely with a select number of brands, creating images that feel considered, distinctive, and true to what they're building.
           </p>

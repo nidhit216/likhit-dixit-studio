@@ -1,23 +1,22 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
-import ProjectCard from "@/components/ProjectCard";
-import Photo from "@/components/Photo";
-import { getProjects } from "@/lib/gallery";
+import HeroSlider from "@/components/HeroSlider";
+
+const HERO_SLIDES = [
+  { src: "/work/tanishq/01-bangles.jpg", alt: "Engraved gold bangles for Tanishq — jewellery photography by Likhit Dixit" },
+  { src: "/work/genki-cafe/01-tray.jpg", alt: "Smoothie bowl and healthy plate for Genki Cafe — food photography by Likhit Dixit" },
+  { src: "/work/spoon-me/01-plates.jpg", alt: "Dessert plating for Spoon Me — food photography by Likhit Dixit" },
+  { src: "/work/royal-dairy/01-jalebi.jpg", alt: "Jalebi sweets for Royal Dairy Farm — product photography by Likhit Dixit" },
+  { src: "/work/dhc/01-row.jpg", alt: "Milkshake flight for DHC — beverage photography by Likhit Dixit" },
+  { src: "/work/tanishq/02-earrings.jpg", alt: "Gold earrings for Tanishq — jewellery photography by Likhit Dixit" },
+];
 
 export default function HomePage() {
-  const projects = getProjects();
-  const selected = projects.slice(0, 4);
-
   return (
     <>
       <header className="hero-full">
         <div className="ph hero-full-media">
-          <Photo
-            src="/work/tanishq/01-bangles.jpg"
-            alt="Engraved gold bangles for Tanishq — jewellery photography by Likhit Dixit"
-            sizes="100vw"
-            priority
-          />
+          <HeroSlider slides={HERO_SLIDES} />
           <div className="hero-full-scrim" />
 
           <div className="hero-full-copy wrap">
@@ -33,35 +32,13 @@ export default function HomePage() {
             </Reveal>
           </div>
 
-          <a href="#selected-work" className="scroll-cue" aria-label="Scroll to selected work">
+          <a href="#studio-teaser" className="scroll-cue" aria-label="Scroll to the studio">
             <span />
           </a>
         </div>
       </header>
 
-      <section id="selected-work">
-        <div className="wrap">
-          <Reveal className="hd">
-            <h2>Selected Work</h2>
-            <span className="lab">Index — {String(projects.length).padStart(2, "0")} projects</span>
-          </Reveal>
-          <div className="grid">
-            {selected.map((p, i) => {
-              const spans = ["c1", "c2", "c3 short", "c4 wide"];
-              return (
-                <ProjectCard
-                  key={p.slug}
-                  project={p}
-                  span={spans[i] ?? "c1"}
-                  delay={i * 70}
-                />
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      <section style={{ paddingTop: 0 }}>
+      <section id="studio-teaser">
         <div className="wrap split">
           <Reveal className="l">
             <span className="lab">The Studio</span>

@@ -6,9 +6,7 @@ export default function Footer() {
       <div className="wrap">
         <div className="foot-grid">
           <div className="big">
-            Have something worth
-            <br />
-            photographing well?{" "}
+            Have something worth photographing well?{" "} <br />
             <Link href="/contact" className="foot-cta">
               Start a project →
             </Link>
