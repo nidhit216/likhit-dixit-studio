@@ -43,9 +43,8 @@ export default function HomePage() {
           <Reveal className="l">
             <span className="lab">The Studio</span>
             <p className="big">
-              A small practice that photographs{" "}
-              <span className="slate">a few things exceptionally well</span> — surface, light and
-              shape.
+              Creating imagery with intention {" "} —
+              <span className="slate">where light, texture and form</span> — tell the story.
             </p>
           </Reveal>
           <Reveal className="r">

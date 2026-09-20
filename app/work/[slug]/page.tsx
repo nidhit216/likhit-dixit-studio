@@ -39,44 +39,30 @@ export default async function ProjectPage({
 
   const next = nextProject(slug);
 
-  const gallery = p.images.slice(1);
+  const rest = p.images.slice(1);
+  const duo = rest.slice(0, 2);
+  const gallery = rest.slice(2);
 
   return (
     <>
-      <div className="ph hero-full-media">
-        <Photo
-          src={p.cover}
-          alt={`${p.name} — cover, ${p.cat.toLowerCase()} photography by Likhit Dixit`}
-          sizes="100vw"
-          priority
-        />
-        <div className="hero-full-scrim" />
-
-        <div className="wrap proj-hero-top">
-          <Link href="/work" className="proj-back">
-            ← Back to work
-          </Link>
-        </div>
-
-        <div className="hero-full-copy proj wrap">
-          <div>
-            <span className="lab hero-full-eyebrow">{p.tags.join(" · ")}</span>
-            <h1>{p.name}</h1>
-            {(p.client || p.year) && (
-              <p className="hero-full-sub">
-                {p.client}
-                {p.year ? ` — ${p.year}` : ""}
-              </p>
-            )}
+      {/* 1. Intro — first two images + summary statement */}
+      <div className="wrap proj-top">
+        {duo.length > 0 && (
+          <div className="proj-duo">
+            {duo.map((im) => (
+              <div key={im.src} className="ph">
+                <Photo src={im.src} alt={im.alt} sizes="(max-width: 880px) 100vw, 50vw" />
+              </div>
+            ))}
           </div>
-        </div>
+        )}
 
-        <a href="#proj-content" className="scroll-cue" aria-label="Scroll to project details">
-          <span />
-        </a>
-      </div>
+        {p.summary && (
+          <div className="proj-meta">
+            <p className="proj-summary">{p.summary}</p>
+          </div>
+        )}
 
-      <div id="proj-content" className="wrap proj-top">
         <div className="proj-meta">
           {p.client && (
             <dl>
@@ -102,10 +88,41 @@ export default async function ProjectPage({
               <dd>{p.deliverables}</dd>
             </dl>
           )}
-          {p.summary && <p className="proj-summary">{p.summary}</p>}
+        </div>
+
+        {p.approach && (
+          <div className="proj-note">
+            <span className="lab k">Approach</span>
+            <p className="p" dangerouslySetInnerHTML={{ __html: p.approach }} />
+          </div>
+        )}
+      </div>
+
+      {/* 2. Hero image */}
+      <div className="ph hero-full-media">
+        <Photo
+          src={p.cover}
+          alt={`${p.name} — cover, ${p.cat.toLowerCase()} photography by Likhit Dixit`}
+          sizes="100vw"
+          priority
+        />
+        <div className="hero-full-scrim" />
+
+        <div className="hero-full-copy proj wrap">
+          <div>
+            <span className="lab hero-full-eyebrow">{p.tags.join(" · ")}</span>
+            <h1>{p.name}</h1>
+            {(p.client || p.year) && (
+              <p className="hero-full-sub">
+                {p.client}
+                {p.year ? ` — ${p.year}` : ""}
+              </p>
+            )}
+          </div>
         </div>
       </div>
 
+      {/* 3. Remaining images */}
       <div className="wrap">
         {gallery.length > 0 && (
           <div className="gallery">
@@ -121,13 +138,6 @@ export default async function ProjectPage({
                 />
               </div>
             ))}
-          </div>
-        )}
-
-        {p.approach && (
-          <div className="proj-note">
-            <span className="lab k">Approach</span>
-            <p className="p" dangerouslySetInnerHTML={{ __html: p.approach }} />
           </div>
         )}
 
