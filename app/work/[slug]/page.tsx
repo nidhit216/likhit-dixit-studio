@@ -3,7 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import Photo from "@/components/Photo";
-import { getProjects, getProject, nextProject } from "@/lib/gallery";
+import ScrollFabs from "@/components/ScrollFabs";
+import { getProjects, getProject, nextProject, prevProject } from "@/lib/gallery";
 
 export function generateStaticParams() {
   return getProjects().map((p) => ({ slug: p.slug }));
@@ -38,6 +39,7 @@ export default async function ProjectPage({
   if (!p) notFound();
 
   const next = nextProject(slug);
+  const prev = prevProject(slug);
 
   const rest = p.images.slice(1);
   const duo = rest.slice(0, 2);
@@ -122,6 +124,8 @@ export default async function ProjectPage({
         </div>
       </div>
 
+      <ScrollFabs downTargetId={gallery.length > 0 ? "proj-nav" : undefined} />
+
       {/* 3. Remaining images */}
       <div className="wrap">
         {gallery.length > 0 && (
@@ -141,10 +145,22 @@ export default async function ProjectPage({
           </div>
         )}
 
-        <Link className="next" href={`/work/${next.slug}`}>
-          <span className="k">Next project</span>
-          <span className="t">{next.name}</span>
-        </Link>
+        <div id="proj-nav" className="proj-nav">
+          <Link className="prev" href={`/work/${prev.slug}`}>
+            <span className="arrow">&larr;</span>
+            <span className="col">
+              <span className="k">Previous</span>
+              <span className="t">{prev.name}</span>
+            </span>
+          </Link>
+          <Link className="next" href={`/work/${next.slug}`}>
+            <span className="col">
+              <span className="k">Next project</span>
+              <span className="t">{next.name}</span>
+            </span>
+            <span className="arrow">&rarr;</span>
+          </Link>
+        </div>
       </div>
     </>
   );

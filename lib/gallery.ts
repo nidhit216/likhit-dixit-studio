@@ -85,6 +85,12 @@ export function nextProject(slug: string): Project {
   return ps[(i + 1) % ps.length];
 }
 
+export function prevProject(slug: string): Project {
+  const ps = getProjects();
+  const i = ps.findIndex((p) => p.slug === slug);
+  return ps[(i - 1 + ps.length) % ps.length];
+}
+
 export function getFilters(): string[] {
   const tags = new Set<string>();
   getProjects().forEach((p) => p.tags.forEach((t) => tags.add(t)));
