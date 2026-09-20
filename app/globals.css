@@ -84,6 +84,7 @@ nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: cen
 
 /* ---------- SECTIONS ---------- */
 section { padding: clamp(40px, 6vw, 76px) 0; }
+#studio-teaser { padding: 0; }
 
 /* ---------- HOME HERO (full-bleed) ---------- */
 .hero-full-media {
@@ -184,24 +185,6 @@ section { padding: clamp(40px, 6vw, 76px) 0; }
 .c1 { grid-column: 1 / 7; }
 .c2 { grid-column: 7 / 13; }
 
-/* ---------- SPLIT (studio teaser + services) ---------- */
-.split { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(14px, 2vw, 26px); align-items: start; }
-.split .l { grid-column: 1 / 6; min-width: 0; }
-.split .l .lab { margin-bottom: 14px; }
-.split .l .big {
-  font-family: var(--font-grotesk), sans-serif; font-weight: 400;
-  font-size: clamp(22px, 2.6vw, 32px); line-height: 1.24;
-}
-.split .r { grid-column: 7 / 13; min-width: 0; }
-.rows { border-top: 1px solid var(--line-strong); }
-.r-row {
-  display: grid; grid-template-columns: 34px 1fr auto; gap: 18px; align-items: baseline;
-  padding: 18px 0; border-bottom: 1px solid var(--line);
-}
-.r-row .n { font-family: var(--font-grotesk), sans-serif; font-size: 12px; color: var(--slate); }
-.r-row .t { font-size: 16px; font-weight: 500; }
-.r-row .d { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-align: right; }
-
 /* ---------- WORK INDEX ---------- */
 .work-page { padding-top: clamp(16px, 2vw, 24px); padding-bottom: clamp(40px, 5vw, 68px); }
 
@@ -273,6 +256,28 @@ section { padding: clamp(40px, 6vw, 76px) 0; }
   text-decoration: none; transition: color 0.3s;
 }
 .clients a:hover { color: var(--slate); }
+
+.placard { text-align: center; padding-top: clamp(56px, 7vw, 96px); padding-bottom: clamp(56px, 7vw, 96px); }
+.placard .rule { display: block; width: 56px; height: 1px; background: var(--line-strong); margin: 0 auto; }
+.placard .kicker { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin: 30px 0 26px; }
+.placard .svc {
+  font-family: var(--font-grotesk), sans-serif; font-weight: 400;
+  font-size: clamp(22px, 3.2vw, 40px); line-height: 1.4; letter-spacing: -0.015em;
+}
+.placard .svc-dot { color: var(--slate); margin: 0 0.55em; }
+.placard-clients { margin-top: 38px; }
+.placard-clients .lbl { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+.placard .names {
+  font-family: var(--font-grotesk), sans-serif; font-weight: 500; font-size: clamp(15px, 1.5vw, 19px); letter-spacing: 0.02em;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 34px;
+}
+.placard .names a { position: relative; color: var(--ink); text-decoration: none; transition: color 0.3s; }
+.placard .names a:hover { color: var(--slate); }
+.placard .names a:not(:last-child)::after {
+  content: ""; position: absolute; right: -18px; top: 50%; width: 4px; height: 4px;
+  border-radius: 50%; background: var(--slate); transform: translateY(-50%);
+}
+.placard .placard-clients + .rule { margin-top: 34px; }
 
 /* ---------- CONTACT ---------- */
 .contact-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(24px, 4vw, 64px); padding-top: clamp(24px, 3.5vw, 44px); }
@@ -372,9 +377,6 @@ footer { border-top: 1px solid var(--line); padding: 44px 0 28px; margin-top: 12
   .c1, .c2 { grid-column: 1 / 13; }
   .card-img { aspect-ratio: 4 / 5; }
 
-  .split .l, .split .r { grid-column: 1 / 13; }
-  .split .r { margin-top: 24px; }
-
   .proj-summary { grid-column: 1 / 13; }
   .proj-meta dl { grid-column: span 6; }
   .proj-note .k, .proj-note .p { grid-column: 1 / 13; }
@@ -398,8 +400,6 @@ footer { border-top: 1px solid var(--line); padding: 44px 0 28px; margin-top: 12
 @media (max-width: 560px) {
   section { padding: clamp(32px, 9vw, 56px) 0; }
   .field.two { grid-template-columns: 1fr; gap: 0; }  /* fix: paired fields were cramped */
-  .r-row { grid-template-columns: 26px 1fr; row-gap: 4px; }
-  .r-row .d { grid-column: 1 / -1; text-align: left; }
   .proj-nav .t { font-size: 22px; max-width: 34vw; }
   .foot-base { grid-template-columns: 1fr; gap: 6px; text-align: center; }
   .foot-base span:first-child,

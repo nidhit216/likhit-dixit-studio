@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import HeroSlider from "@/components/HeroSlider";
+import { getProjects } from "@/lib/gallery";
 
 const HERO_SLIDES = [
   { src: "/work/tanishq/01-bangles.jpg", alt: "Engraved gold bangles for Tanishq — jewellery photography by Likhit Dixit" },
@@ -12,6 +13,7 @@ const HERO_SLIDES = [
 ];
 
 export default function HomePage() {
+  const projects = getProjects();
   return (
     <>
       <header className="hero-full">
@@ -39,23 +41,25 @@ export default function HomePage() {
       </header>
 
       <section id="studio-teaser">
-        <div className="wrap split">
-          <Reveal className="l">
-            <span className="lab">The Studio</span>
-            <p className="big">
-              Creating imagery with intention {" "} —
-              <span className="slate">where light, texture and form</span> — tell the story.
+        <Reveal className="placard wrap">
+          <span className="rule" />
+          <p className="kicker">What the studio does</p>
+          <p className="svc">
+            Product &amp; still life<span className="svc-dot">·</span>Food &amp; tabletop
+            <span className="svc-dot">·</span>Campaign &amp; editorial<span className="svc-dot">·</span>E-commerce catalogue
+          </p>
+          <div className="placard-clients">
+            <p className="lbl">Trusted by</p>
+            <p className="names">
+              {projects.map((p) => (
+                <Link key={p.slug} href={`/work/${p.slug}`}>
+                  {p.name}
+                </Link>
+              ))}
             </p>
-          </Reveal>
-          <Reveal className="r">
-            <div className="rows">
-              <div className="r-row"><span className="n">01</span><span className="t">Product &amp; still life</span></div>
-              <div className="r-row"><span className="n">02</span><span className="t">Food &amp; tabletop</span></div>
-              <div className="r-row"><span className="n">03</span><span className="t">Campaign &amp; editorial</span></div>
-              <div className="r-row"><span className="n">04</span><span className="t">E-commerce catalogue</span></div>
-            </div>
-          </Reveal>
-        </div>
+          </div>
+          <span className="rule" />
+        </Reveal>
       </section>
     </>
   );
