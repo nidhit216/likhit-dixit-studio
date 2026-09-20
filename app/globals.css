@@ -220,6 +220,7 @@ section { padding: clamp(40px, 6vw, 76px) 0; }
 }
 .studio-left { grid-column: 1 / 7; min-width: 0; }
 .portrait-img { aspect-ratio: 4 / 5; }
+.portrait-img .photo-img { object-position: top; }
 .studio-caption { margin-top: 16px; font-size: 13px; color: var(--muted); max-width: 108ch; }
 .studio-right { grid-column: 7 / 13; min-width: 0; }
 .studio-right h1 {

@@ -13,7 +13,7 @@ export default function Footer() {
           </div>
           <div className="links">
             <Link href="/work">Work</Link>
-            <Link href="/studio">Studio</Link>
+            <Link href="/studio">About</Link>
             <Link href="/contact">Contact</Link>
             <a href="mailto:likhitdixit@gmail.com">likhitdixit@gmail.com</a>
             <a href="https://instagram.com/likhitdixit" target="_blank" rel="noreferrer">

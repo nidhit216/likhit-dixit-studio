@@ -41,17 +41,9 @@ export default function StudioPage() {
           <p>
             My approach is simple: thoughtful composition, beautiful light, and an eye for the details that make something worth noticing. Whether it’s a single hero image or an entire campaign, I care about creating work that feels cohesive, timeless, and unmistakably yours.
           </p>
-          <div style={{ marginTop: 34 }}>
-            <span className="lab">Services</span>
-          </div>
-          <div className="clients" style={{ marginTop: 14 }}>
-            <span>Product &amp; still life</span>
-            <span>Food &amp; tabletop</span>
-            <span>Campaign &amp; editorial</span>
-            <span>E-commerce catalogue</span>
-          </div>
 
-          <div style={{ marginTop: 40 }}>
+
+          <div style={{ marginTop: 34 }}>
             <span className="lab">Selected clients</span>
           </div>
           <div className="clients">
@@ -61,6 +53,20 @@ export default function StudioPage() {
               </Link>
             ))}
           </div>
+
+
+          <div style={{ marginTop: 40 }}>
+            <span className="lab">Services</span>
+          </div>
+
+
+          <div className="clients" style={{ marginTop: 14 }}>
+            <span>Product &amp; still life</span>
+            <span>Food &amp; tabletop</span>
+            <span>Campaign &amp; editorial</span>
+            <span>E-commerce catalogue</span>
+          </div>
+
         </Reveal>
       </div>
 

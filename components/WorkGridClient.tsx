@@ -11,7 +11,7 @@ export default function WorkGridClient({
   projects: Project[];
   filters: string[];
 }) {
-  const [active, setActive] = useState<string>("All");
+  const [active, setActive] = useState<string>(filters[0] ?? "All");
 
   const list = useMemo(
     () => projects.filter((p) => active === "All" || p.tags.includes(active)),
