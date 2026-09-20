@@ -96,5 +96,5 @@ export function getFilters(): string[] {
   getProjects().forEach((p) => p.tags.forEach((t) => tags.add(t)));
   const ordered = FILTER_ORDER.filter((t) => tags.has(t));
   const extras = [...tags].filter((t) => !FILTER_ORDER.includes(t));
-  return [...ordered, ...extras, "All"];
+  return ["All", ...ordered, ...extras];
 }

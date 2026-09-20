@@ -24,6 +24,7 @@ export default function Footer() {
         <div className="foot-base">
           <span>© {new Date().getFullYear()} Likhit Dixit Studio</span>
           <span>Product &amp; Food Photography — Mumbai</span>
+          <span>Made with ❤️ by Nidhi.</span>
         </div>
       </div>
     </footer>
